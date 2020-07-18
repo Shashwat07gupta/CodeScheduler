@@ -1,27 +1,30 @@
 const express= require('express');
 const mongoose = require('mongoose');
-const bodyParser= require('body-parser');
 const path = require('path');
-const items = require('./routes/api/Items');
-
+const config = require('config');
 const app = express();
 
 //Bodyparser middleware
 
-app.use(bodyParser.json());
+app.use(express.json());
 
 //db Config
-const db= require('./config/keys').mongoURI;
+const db= config.get('mongoURI');
 
 //Connect to Mongo
 mongoose
-    .connect(db)
+    .connect(db,{
+        useNewUrlParser: true,
+        useCreateIndex: true
+    })
     .then(()=>console.log('MongoDB connected...'))
     .catch(err => console.log(err));
 
 //Use routes
 
-app.use('/api/Items',items);
+app.use('/api/Items',require('./routes/api/Items'));
+app.use('/api/Users',require('./routes/api/Users'));
+app.use('/api/auth',require('./routes/api/auth'));
 
 //Serve static assets if we are in production
 if(process.env.node_env === 'production'){

@@ -1,0 +1,26 @@
+html{
+  background: url('Scheduler.jpeg') no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html .color{
+  background: white no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+html .text{
+  position: absolute;
+  z-index: 999;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  size: 100px;
+  color: black;
+  top: 50%; /* Adjust this value to move the positioned div up and down */
+  text-align: center;
+  width: 60%; /* Set the width of the positioned div */
+}

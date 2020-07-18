@@ -4,8 +4,14 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems,deleteItem } from '../actions/itemactions';
 import  PropTypes from 'prop-types';
-
 class ShoppingList extends Component{
+
+    static propTypes = {
+        getItems : PropTypes.func.isRequired,
+        item: PropTypes.object.isRequired,
+        isAuthenticated: PropTypes.bool
+    };
+
     componentDidMount(){
         this.props.getItems();   
     }
@@ -15,6 +21,8 @@ class ShoppingList extends Component{
     render(){
         const { items } = this.props.item;
         return(
+            <div>
+            { this.props.isAuthenticated ?
             <Container>
                 <ListGroup>
                     <TransitionGroup classname="shopping-list">
@@ -35,16 +43,17 @@ class ShoppingList extends Component{
                     </TransitionGroup>
                 </ListGroup>
             </Container>
+            :null
+            }
+            </div>
         );
     }
 }
-ShoppingList.propTypes = {
-    getItems : PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
-};
+
 
 const mapStateToProps =(state) =>({
-    item: state.item
+    item: state.item,
+    isAuthenticated : state.auth.isAuthenticated
 });
 
 export default connect( mapStateToProps,
