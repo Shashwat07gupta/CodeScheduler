@@ -22,7 +22,6 @@ class ShoppingList extends Component{
         const { items } = this.props.item;
         return(
             <div>
-            { this.props.isAuthenticated ?
             <Container>
                 <ListGroup>
                     <TransitionGroup classname="shopping-list">
@@ -43,8 +42,8 @@ class ShoppingList extends Component{
                     </TransitionGroup>
                 </ListGroup>
             </Container>
-            :null
-            }
+
+        
             </div>
         );
     }

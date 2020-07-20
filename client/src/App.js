@@ -15,6 +15,7 @@ import PropTypes from 'prop-types';
 import RegisterModal from './components/auth/registermodal';
 import LoginModal from './components/auth/loginModal';
 import  Logout from './components/auth/logout';
+import { login } from './actions/authActions';
 import {
   BrowserRouter as Router,
   Switch,
@@ -24,33 +25,40 @@ import {
   useHistory,
   useLocation
 } from "react-router-dom";
+//let =true;
+const loggedIn ={
+  isAuthenticated: false
+};
+export const change =() =>{
+  loggedIn.setState({isAuthenticated: true });
+} 
 class App extends Component {
   componentDidMount(){
     store.dispatch(loadUser);
   }
   static propTypes = {
     auth: PropTypes.object.isRequired
-}
-privateRoute({ children, ...rest }) {
-  return (
+  }
+  render(){
+  
+  ///login(changeLoggedin(loggedIn));
+  const PrivateRoute = ({ component: Component, ...rest }) => (
     <Route
       {...rest}
-      render={({ location }) =>
-        this.props.auth.isAuthenticated ? (
-          children
+      render={(props) =>
+        loggedIn.isAuthenticated ? (
+          <Component {...props} />
         ) : (
           <Redirect
             to={{
-              pathname: "/list",
-              state: { from: location }
+              pathname: '/home',
+              state: { from: props.location },
             }}
           />
         )
       }
     />
   );
-}
-  render(){
   return (
     <Provider store={store}>
       <div className="App">
@@ -58,10 +66,14 @@ privateRoute({ children, ...rest }) {
         <Container>
         <Router>
           <Switch>
-           <Route exact path='/profile' component={()=> <Fragment><ItemModal/><ShoppingList/></Fragment> } / >
-           </Switch>
-         <Switch>
-  <Route exact path='/home' component={()=> <Homepage/> } / >
+           <PrivateRoute exact path='/profile' component={()=> <Fragment><ItemModal/><ShoppingList/></Fragment> } / >
+          <Route exact path='/home' component={()=> <Homepage/> } / >
+            {
+              loggedIn.isAuthenticated ?
+              <Redirect to='/profile'/>
+              :
+              <Redirect to='/home'/>
+            }
          </Switch>
         </Router>
         </Container>

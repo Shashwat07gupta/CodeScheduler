@@ -15,6 +15,7 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { login } from '../../actions/authActions';
 import {clearErrors } from '../../actions/errorActions';
+import { change,loggedIn } from '../../App';
 class LoginModal extends Component{
     state = {
         modal: false,
@@ -45,6 +46,7 @@ class LoginModal extends Component{
         if(this.state.modal){
             if(isAuthenticated){
                 this.toggle();
+                change();
             }
         }
     }
@@ -69,7 +71,6 @@ class LoginModal extends Component{
         }
         //Attempt to login
         this.props.login(user);
-        
     };
     render(){
         return (

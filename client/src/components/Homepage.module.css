@@ -1,18 +1,18 @@
-html{
+.img{
   background: url('Scheduler.jpeg') no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-html .color{
+/*html .color{
   background: white no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-}
-html .text{
+}*/
+.text{
   position: absolute;
   z-index: 999;
   margin: 0 auto;
