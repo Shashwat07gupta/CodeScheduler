@@ -26,56 +26,25 @@ import {
   useLocation
 } from "react-router-dom";
 //let =true;
-const loggedIn ={
+const loggedIn = {
   isAuthenticated: false
-};
-export const change =() =>{
-  loggedIn.setState({isAuthenticated: true });
-} 
+}
+/*export const change =() =>{
+  console.log("f******g finally....");
+  loggedIn.isAuthenticated = true;
+} */
 class App extends Component {
   componentDidMount(){
     store.dispatch(loadUser);
   }
-  static propTypes = {
-    auth: PropTypes.object.isRequired
-  }
   render(){
-  
   ///login(changeLoggedin(loggedIn));
-  const PrivateRoute = ({ component: Component, ...rest }) => (
-    <Route
-      {...rest}
-      render={(props) =>
-        loggedIn.isAuthenticated ? (
-          <Component {...props} />
-        ) : (
-          <Redirect
-            to={{
-              pathname: '/home',
-              state: { from: props.location },
-            }}
-          />
-        )
-      }
-    />
-  );
+  
   return (
     <Provider store={store}>
       <div className="App">
         <AppNavbar />
         <Container>
-        <Router>
-          <Switch>
-           <PrivateRoute exact path='/profile' component={()=> <Fragment><ItemModal/><ShoppingList/></Fragment> } / >
-          <Route exact path='/home' component={()=> <Homepage/> } / >
-            {
-              loggedIn.isAuthenticated ?
-              <Redirect to='/profile'/>
-              :
-              <Redirect to='/home'/>
-            }
-         </Switch>
-        </Router>
         </Container>
       </div>
     </Provider>

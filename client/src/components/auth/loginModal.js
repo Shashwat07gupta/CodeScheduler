@@ -46,7 +46,6 @@ class LoginModal extends Component{
         if(this.state.modal){
             if(isAuthenticated){
                 this.toggle();
-                change();
             }
         }
     }

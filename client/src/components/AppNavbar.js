@@ -14,6 +14,19 @@ import PropTypes from 'prop-types';
 import RegisterModal from './auth/registermodal';
 import LoginModal from './auth/loginModal';
 import  Logout from './auth/logout';
+import change from '.././App';
+import ItemModal from './ItemModel';
+import ShoppingList from './Shoppinglist';
+import Homepage from './Homepage';
+import {
+    BrowserRouter as Router,
+    Switch,
+    Route,
+    Link,
+    Redirect,
+    useHistory,
+    useLocation
+  } from "react-router-dom";
 class AppNavbar extends Component{
     state = {
         isOpen: false
@@ -41,6 +54,7 @@ class AppNavbar extends Component{
                    <NavItem>
                                 <Logout />                           
                     </NavItem>
+
             </Fragment>
         );
         const guestLinks = (
@@ -69,6 +83,7 @@ class AppNavbar extends Component{
                     </Collapse>
                 </Container>
             </Navbar>
+            {isAuthenticated ? <Fragment><ItemModal/><ShoppingList/></Fragment>: <Homepage/>}
         </div>
         );
     }   
