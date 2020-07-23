@@ -83,7 +83,7 @@ class AppNavbar extends Component{
                     </Collapse>
                 </Container>
             </Navbar>
-            {isAuthenticated ? <Fragment><ItemModal/><ShoppingList/></Fragment>: <Homepage/>}
+            {isAuthenticated ? <Fragment><ItemModal/><ShoppingList/></Fragment> :<Homepage/> }
         </div>
         );
     }   

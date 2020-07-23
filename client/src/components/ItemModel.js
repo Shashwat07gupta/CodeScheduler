@@ -56,19 +56,19 @@ class ItemModal extends Component{
                 </Button>
                 < Modal isOpen={this.state.modal} toggle={this.toggle} >
                     <ModalHeader toggle={this.toggle}>
-                        Add to Shoppinglist
+                        Add  a Problem
                     </ModalHeader>
                     <ModalBody>
                         <Form onSubmit={this.onSubmit}>
                             <FormGroup>
-                                <Label for="item">
-                                    Item
+                                <Label for="problem name">
+                                    Problem name
                                 </Label>
                                 <Input
                                     type="text"
                                     name="name"
                                     id="item"
-                                    placeholder="Add Shopping item"
+                                    placeholder="Add Problem name"
                                     onChange={this.onChange}
                                 />
                                 <Button 

@@ -45,6 +45,13 @@ class App extends Component {
       <div className="App">
         <AppNavbar />
         <Container>
+          <Router>
+            <Switch>
+              <Route path='/Home'>
+                  <Homepage/>
+              </Route>
+            </Switch>
+          </Router>
         </Container>
       </div>
     </Provider>

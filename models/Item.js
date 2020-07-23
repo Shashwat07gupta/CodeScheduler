@@ -7,6 +7,11 @@ const ItemSchema = new Schema({
         type: String,
         required: true
     },
+    owner: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'user',
+        required: true
+   },
     date: {
         type: Date,
         default: Date.now
