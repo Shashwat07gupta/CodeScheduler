@@ -25,7 +25,9 @@ class ShoppingList extends Component{
             <Container>
                 <ListGroup>
                     <TransitionGroup classname="shopping-list">
-                        {items.map(({_id,name})=>(
+                        {   console.log(items)}
+                        {
+                            items.map(({_id,name,link,remarks})=>(
                             <CSSTransition key={_id} timeout = {500} classNames="fade">
                                 <ListGroupItem>
                                     <Button
@@ -35,7 +37,7 @@ class ShoppingList extends Component{
                                         onClick={this.onDeleteClick.bind(this,_id)}
                                     >&times;
                                     </Button>
-                                    {name}
+                                    {name} <a href={"//"+link}>{link}</a> {remarks}
                                 </ListGroupItem>
                             </CSSTransition> 
                         ))}

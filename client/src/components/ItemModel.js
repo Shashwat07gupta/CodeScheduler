@@ -15,7 +15,9 @@ import  PropTypes from 'prop-types';
 class ItemModal extends Component{
     state = {
         modal: false,
-        name: ''
+        name: '',
+        link:'',
+        remarks:''
     };
     static propTypes = {
         isAuthenticated: PropTypes.bool
@@ -27,14 +29,16 @@ class ItemModal extends Component{
         });
     };
     onChange = (e) =>{
-        this.setState({[e.target.name]: e.target.value });
+        this.setState({[e.target.name]: e.target.value })
     };
 
     onSubmit = (e) => { 
         e.preventDefault();
 
         const newItem = {
-            name: this.state.name
+            name: this.state.name,
+            link:this.state.link,
+            remarks:this.state.remarks
         }
 
         //Add item via addItem action
@@ -69,6 +73,20 @@ class ItemModal extends Component{
                                     name="name"
                                     id="item"
                                     placeholder="Add Problem name"
+                                    onChange={this.onChange}
+                                />
+                                <Input
+                                    type="text"
+                                    name="link"
+                                    id="item"
+                                    placeholder="Add Problem Link"
+                                    onChange={this.onChange}
+                                />
+                                <Input
+                                    type="text"
+                                    name="remarks"
+                                    id="item"
+                                    placeholder="Add Remarks/Difficulty"
                                     onChange={this.onChange}
                                 />
                                 <Button 

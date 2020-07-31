@@ -15,6 +15,14 @@ const ItemSchema = new Schema({
     date: {
         type: Date,
         default: Date.now
+    },
+    link:{
+        type:String,
+        required:true
+    },
+    remarks:{
+        type:String,
+        required:false
     }
 });
 
