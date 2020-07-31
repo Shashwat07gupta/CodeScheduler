@@ -21,6 +21,8 @@ router.post('/', auth, (req, res) => {
 //   console.log(req.user.id);
   const newItem = new Item({
     name: req.body.name,
+    link:req.body.link,
+    remarks:req.body.remarks,
     owner: req.user.id,
   });
 //  console.log(newItem);
